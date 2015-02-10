@@ -23,6 +23,8 @@ module td
         getChildrenByKind(kind:ReflectionKind):DeclarationReflection[] {
             var values = [];
             for (var key in this.children) {
+				if (!this.children.hasOwnProperty(key))
+					continue;
                 var child = this.children[key];
                 if (child.kindOf(kind)) {
                     values.push(child);

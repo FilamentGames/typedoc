@@ -335,6 +335,9 @@ module td
                 reflection.url = url;
                 reflection.hasOwnDocument = true;
                 for (var key in reflection.children) {
+					if (!reflection.children.hasOwnProperty(key))
+						continue;
+
                     var child = reflection.children[key];
                     if (mapping.isLeaf) {
                         DefaultTheme.applyAnchorUrl(child, reflection);

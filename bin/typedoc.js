@@ -4108,6 +4108,8 @@ var td;
         ContainerReflection.prototype.getChildrenByKind = function (kind) {
             var values = [];
             for (var key in this.children) {
+                if (!this.children.hasOwnProperty(key))
+                    continue;
                 var child = this.children[key];
                 if (child.kindOf(kind)) {
                     values.push(child);
@@ -6321,6 +6323,8 @@ var td;
                 reflection.url = url;
                 reflection.hasOwnDocument = true;
                 for (var key in reflection.children) {
+                    if (!reflection.children.hasOwnProperty(key))
+                        continue;
                     var child = reflection.children[key];
                     if (mapping.isLeaf) {
                         DefaultTheme.applyAnchorUrl(child, reflection);
